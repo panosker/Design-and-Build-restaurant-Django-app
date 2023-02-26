@@ -27,6 +27,9 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView,generics.DestroyAPIView)
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
+    def delete(self,request):
+        return self.destroy(request)
+
     
 
 
