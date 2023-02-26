@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics,viewsets 
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.decorators import api_view , permission_classes
 from rest_framework.response import Response
 from .models import Menu , Bookings
-from .serializers import MenuSerializer , BookingsSerializer
+from .serializers import MenuSerializer , BookingsSerializer, UserRegistrationSerializer
 from django.contrib.auth.models import User 
 from rest_framework import status
 
@@ -37,6 +37,11 @@ class BookingsViewSet(viewsets.ModelViewSet):
     queryset = Bookings.objects.all()
     serializer_class = BookingsSerializer
     permission_classes = [IsAuthenticated]
+
+
+class UserRegistrationView(generics.CreateAPIView):
+    serializer_class = UserRegistrationSerializer
+    permission_classes = [AllowAny]
 
 
 
