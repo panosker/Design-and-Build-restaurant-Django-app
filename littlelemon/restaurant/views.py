@@ -11,7 +11,10 @@ from rest_framework import status
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html',{})
+    return render(request,'index.html')
+
+def about(request):
+    return render(request, 'about.html')
 
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
